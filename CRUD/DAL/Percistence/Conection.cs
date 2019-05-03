@@ -10,5 +10,32 @@ namespace DAL.Percistence
         protected SqlConnection Con;
         protected SqlCommand Cmd;
         protected SqlDataReader Dr;
+
+        protected void OpenConection()
+        {
+            try
+            {
+                Con = new SqlConnection("Data Source=DESKTOP-JDK2GPD;Initial Catalog=bludata;Integrated Security=True");
+                Con.Open();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception (ex.Message);
+            }
+        }
+
+        protected void CloseConection()
+        {
+            try
+            {
+                Con.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
